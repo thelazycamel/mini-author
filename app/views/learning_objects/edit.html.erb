@@ -1,0 +1,4 @@
+<h2>Edit Learning Object <%=@learning_object.name %></h2>
+<%= form_for @learning_object, url: learning_object_path(@learning_object), method: :patch, multipart: true do |form| %>
+  <%= render partial: "form", locals: {form: form} %>
+<% end %>

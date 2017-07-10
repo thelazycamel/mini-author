@@ -1,0 +1,13 @@
+<div class="form-group">
+  <%= form.label :name %>
+  <%= form.text_field :name, class: "form-control" %>
+</div>
+<div class="form-group" %>
+  <%= form.label :site_id %>
+  <%= form.collection_select(:site_id, Site.all, :id, :name, {}, {class: "form-control"}) %>
+</div>
+<div class="form-group">
+  <%= form.label :lo %>
+  <%= form.file_field :lo, class: "form-control" %>
+</div>
+<%= form.submit %>

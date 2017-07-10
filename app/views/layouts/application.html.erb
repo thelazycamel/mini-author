@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MiniAuthor</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+  <nav class="navbar navbar-brand">
+    <h1 class="navbar-brand mb-0">Mini Author - Local File uploader</h1>
+    <%= link_to "Site Management", sites_path, class: "navbar-brand" %>
+    <%= link_to "LO Management", learning_objects_path, class: "navbar-brand" %>
+  </nav>
+  <hr>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+  <%= yield %>
+</div>
+
+</body>
+</html>

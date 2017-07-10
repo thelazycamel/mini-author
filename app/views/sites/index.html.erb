@@ -1,0 +1,23 @@
+<h2>Site Management</h2>
+<%= link_to "Create Site", new_site_path, class: "btn btn-large btn-success" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sites.each do |site| %>
+      <tr>
+        <td><%= site.name %></td>
+        <td><%= "#{site.domain}:#{site.port}#{site.path}"%></td>
+        <td>
+          <%= link_to "edit", edit_site_path(site), class: "btn btn-small btn-success" %>
+          <%= link_to "destroy", site_path(site), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-small btn-danger" %>
+        </td>
+    <% end %>
+  </tbody>
+</table>

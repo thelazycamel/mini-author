@@ -1,0 +1,25 @@
+<h2>Learning Objects</h2>
+<%= link_to "Upload New Learning Object", new_learning_object_path, class: "btn btn-large btn-success" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>LO Name</th>
+      <th>Response</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @learning_objects.each do |lo| %>
+      <tr>
+        <td><%= lo.site.name %></td>
+        <td><%= lo.name %></td>
+        <td><%= lo.upload_response %></td>
+        <td>
+          <%= link_to "edit", edit_learning_object_path(lo), class: "btn btn-small btn-success" %>
+          <%= link_to "destroy", learning_object_path(lo), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-small btn-danger" %>
+        </td>
+    <% end %>
+  </tbody>
+</table>

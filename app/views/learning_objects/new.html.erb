@@ -1,0 +1,4 @@
+<h2>Upload Learning Object</h2>
+<%= form_for @learning_object, multipart: true do |form| %>
+  <%= render partial: "form", locals: {form: form} %>
+<% end %>

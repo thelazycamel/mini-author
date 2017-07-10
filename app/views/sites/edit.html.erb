@@ -1,0 +1,4 @@
+<h2>Edit Site <%=@site.name %></h2>
+<%= form_for @site, url: site_path(@site), method: :patch do |form| %>
+  <%= render partial: "form", locals: {form: form} %>
+<% end %>
