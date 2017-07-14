@@ -21,3 +21,6 @@
 
 # Ignore vim files
 *.swp
+
+# Ignore public/uploads folder
+/public/uploads/*
