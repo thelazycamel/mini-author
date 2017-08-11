@@ -42,7 +42,7 @@ class LearningObjectsController < ApplicationController
   private
 
   def learning_object_params
-    params.require(:learning_object).permit(:name, :site_id, :lo)
+    params.require(:learning_object).permit(:name, :site_id, :lo, :info_xml)
   end
 
 end

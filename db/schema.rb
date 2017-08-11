@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710075226) do
+ActiveRecord::Schema.define(version: 20170811131029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170710075226) do
     t.string   "upload_response"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "info_xml"
   end
 
   create_table "sites", force: :cascade do |t|

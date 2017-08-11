@@ -14,12 +14,16 @@ class CreateLearningObjectCommand < BaseCommand
   private
 
   def upload_to_site
-    upload_response = RestClient.put(resource_url, {"Resource" => lo_file}, {content_type: :json, accept: :json})
+    upload_response = RestClient.put(resource_url, {"Resource" => lo_file, "LearningObjectInfo" => info_xml_file}, {content_type: :json, accept: :json})
     learning_object.upload_response = JSON.parse(upload_response)["IdentId"]
   end
 
   def save_learning_object
     learning_object.save!
+  end
+
+  def info_xml_file
+    File.new(learning_object.info_xml.file.file) if learning_object.info_xml
   end
 
   def lo_file
