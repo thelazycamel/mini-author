@@ -10,9 +10,9 @@ gem 'turbolinks'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'rest-client'
 
 gem 'carrierwave', '~> 1.0'
-gem 'rest_client'
 
 group :development, :test do
   gem 'pry'
