@@ -20,12 +20,16 @@ class UpdateLearningObjectCommand < BaseCommand
   end
 
   def upload_to_site
-    upload_response = RestClient.post(resource_url, {"Resource" => lo_file}, {content_type: :json, accept: :json})
+    upload_response = RestClient.post(resource_url, {"Resource" => lo_file, "LearningObjectInfo" => info_xml_file}, {content_type: :json, accept: :json})
     @identifier = upload_response = JSON.parse(upload_response)["IdentId"]
   end
 
   def update_learning_object
     learning_object.update_attributes(lo_params.merge(upload_response: @identifier))
+  end
+
+  def info_xml_file
+    File.new(learning_object.info_xml.file.file) if learning_object.info_xml
   end
 
   def lo_file
