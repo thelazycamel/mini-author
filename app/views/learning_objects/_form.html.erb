@@ -4,7 +4,7 @@
 </div>
 <div class="form-group" %>
   <%= form.label :site_id %>
-  <%= form.collection_select(:site_id, Site.all, :id, :name, {}, {class: "form-control"}) %>
+  <%= form.select(:site_id, sites_for_select(@learning_object.site_id), {}, class: "form-control") %>
 </div>
 <div class="form-group">
   <%= form.label :lo %>
