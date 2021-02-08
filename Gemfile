@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rest-client'
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 group :development, :test do
   gem 'pry'
