@@ -31,7 +31,11 @@ class CreateLearningObjectCommand < BaseCommand
   end
 
   def resource_url
-    "#{resource_domain}:#{resource_port}#{resource_path}"
+    if resource_port.blank?
+      "#{resource_domain}#{resource_path}"
+    else
+      "#{resource_domain}:#{resource_port}#{resource_path}"
+    end
   end
 
   def resource_domain
