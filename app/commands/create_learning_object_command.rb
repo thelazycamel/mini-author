@@ -43,7 +43,7 @@ class CreateLearningObjectCommand < BaseCommand
   end
 
   def resource_port
-    learning_object.site.port ? learning_object.site.port.to_i : 80
+    learning_object.site.port.to_i unless learning_object.site.port.blank?
   end
 
   def resource_path
