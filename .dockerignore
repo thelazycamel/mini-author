@@ -1,0 +1,10 @@
+.git
+log/*
+tmp/*
+node_modules/
+.bundle/
+vendor/bundle/
+public/assets/
+public/uploads/
+coverage/
+.DS_Store

@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=mini_author_development
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    image: mini_author
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - RAILS_ENV=development
+      - RACK_ENV=development
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/mini_author_development
+      - SECRET_KEY_BASE=dev_secret_key
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    ports:
+      - "8084:8084"
+    depends_on:
+      - db
+    command: bash -lc "bundle install && bundle exec rake db:migrate && bundle exec rails server -b 0.0.0.0 -p 8084"
+
+volumes:
+  pg_data:
+  bundle_cache:

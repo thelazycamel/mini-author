@@ -13,8 +13,8 @@ class LearningObjectsController < ApplicationController
     CreateLearningObjectCommand.execute(@learning_object)
     flash[:info] = "Created Successfully"
     redirect_to learning_objects_path
-  rescue
-    flash.now[:danger] = "Something went wrong, check the logs"
+  rescue => e
+    flash.now[:danger] = "Something went wrong, check the logs, #{e.message}"
     render :new
   end
 
@@ -27,8 +27,8 @@ class LearningObjectsController < ApplicationController
     UpdateLearningObjectCommand.execute(@learning_object, learning_object_params)
     flash[:info] = "Updated successfully"
     redirect_to learning_objects_path
-  rescue
-    flash.now[:danger] = "Something went wrong, check the logs"
+  rescue => e
+    flash.now[:danger] = "Something went wrong, check the logs, #{e.message}"
     render :edit
   end
 
