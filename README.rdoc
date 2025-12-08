@@ -1,28 +1,10 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This runs on old ruby/rails version and hopefully will be updated soon.
 
-Things you may want to cover:
+For local deployment it has been set up to work in docker, but can easily run without.
 
-* Ruby version
+note: for setups using shoryuken/localstack and AWS you will need to ensure the importer/cms/web queues are
+setup on localstack and that AWS has the correct credentials to enable importer to upload to s3, check the .env.example files
+in those repositories.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
