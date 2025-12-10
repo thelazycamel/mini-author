@@ -20,7 +20,7 @@ class UpdateLearningObjectCommand < BaseCommand
   end
 
   def upload_to_site
-    upload_response = RestClient.post(resource_url, {"Resource" => lo_file, "LearningObjectInfo" => info_xml_file}, {content_type: :json, accept: :json})
+    upload_response = RestClient.put(resource_url, {"Resource" => lo_file, "LearningObjectInfo" => info_xml_file}, {content_type: :json, accept: :json})
     @identifier = upload_response = JSON.parse(upload_response)["IdentId"]
   end
 

@@ -1,11 +1,25 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  host: localhost
-  pool: 5
+  host: <%= ENV["DB_HOST"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  pool: <%= ENV.fetch("DB_POOL_SIZE", "5")  %>
+  variables:
+    statement_timeout: <%= ENV.fetch("STATEMENT_TIMEOUT", "50000") %>
 
 development:
   <<: *default
-  database: mini_author
+  database: <%= ENV["MINI_AUTHOR_DB_NAME_DEV"] %>
 
+staging:
+  <<: *default
+  database: <%= ENV["MINI_AUTHOR_DB_NAME_STAGING"] %>
+
+production:
+  <<: *default
+  database: <%= ENV["MINI_AUTHOR_DB_NAME"] %>
+
+test:
+  <<: *default
+  database: <%= ENV["MINI_AUTHOR_DB_NAME_TEST"] %>

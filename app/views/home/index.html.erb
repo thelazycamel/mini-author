@@ -1,4 +1,17 @@
 <h2>Welcome</h2>
+<p>
+  Mini Author is a tool for importing learning objects locally in order to test the importer service as well as testing learning object content locally.
+  You can download the content zip from the CMS (any environment) and upload it here to see how the importer handles it.
+  You will need to extract the zip and pass the zip and the LearningObjectInfo.xml file to the upload form.
+</p>
+
+<p class="alert alert-warning">
+  Note:<br/>
+  1. Ensure importer is up and running and your site is pointing to the correct URL.<br/>
+  2. Web, CMS & possibly env vars AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY are set correctly to dev.<br/>
+  3. Web, CMS & Importer should also use SHORYUKEN_USE_LOCALSTACK=true and have LOCAL_STACK_ENDPOINT set<br/>
+  4. Web should also use CLOUDFRONT_KEY_ID and CLOUDFRONT_PRIVATE_KEY_FILE pointing to dev keys.<br/>
+</p>
 <%= link_to "Site Management", sites_path, class: "btn btn-large btn-info" %>
 <%= link_to "LO Management", learning_objects_path, class: "btn btn-large btn-info" %>
 <%= link_to "Upload Learning Object", new_learning_object_path, class: "btn btn-large btn-success" %>

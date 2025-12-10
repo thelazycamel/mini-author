@@ -65,9 +65,14 @@ GEM
     crass (1.0.6)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.14.2)
+    foreman (0.89.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-accept (1.7.0)
@@ -193,6 +198,8 @@ DEPENDENCIES
   bootstrap!
   carrierwave (~> 1.0)
   coffee-rails (~> 4.1.0)
+  dotenv-rails
+  foreman
   jbuilder (~> 2.0)
   jquery-rails
   pg (= 0.20)

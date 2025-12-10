@@ -1,9 +1,6 @@
 <h2>Learning Objects</h2>
 <%= link_to "Upload New Learning Object", new_learning_object_path, class: "btn btn-large btn-success" %>
 
-<p class="alert alert-warning">Note: The edit functionality is currently disabled while we investigate an issue with the request url.
-  However creating a new record with the same content will update the existing learning object through importer.</p>
-
 <table class="table">
   <thead>
     <tr>
@@ -20,10 +17,7 @@
         <td><%= lo.name %></td>
         <td><%= lo.upload_response %></td>
         <td>
-          <!-- TODO edit url is not working needs investigation
           <%= link_to "edit", edit_learning_object_path(lo), class: "btn btn-small btn-success" %>
-          -->
-          
           <%= link_to "destroy", learning_object_path(lo), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-small btn-danger" %>
         </td>
     <% end %>
