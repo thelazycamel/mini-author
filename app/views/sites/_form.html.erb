@@ -1,0 +1,55 @@
+<%= form_with(model: site, class: "mb-3") do |f| %>
+  <% if site.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(site.errors.count, "error") %> prevented this site from being saved:</h5>
+      <ul class="mb-0">
+        <% site.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :domain, "Importer Domain", class: "form-label" %>
+    <%= f.text_field :domain, class: "form-control", placeholder: "https://example.com" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :path, "LO Path", class: "form-label" %>
+    <%= f.text_field :path, class: "form-control", placeholder: "/api/v1/resources" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :port, "Importer Port (if required)", class: "form-label" %>
+    <%= f.text_field :port, class: "form-control", placeholder: "8443 (optional)" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :structure_path, class: "form-label" %>
+    <%= f.text_field :structure_path, class: "form-control", placeholder: "internal/api/v1/structures (optional)" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :api_token, "API Token (Bearer token for authenticated endpoints)", class: "form-label" %>
+    <%= f.text_area :api_token, class: "form-control", rows: 3, placeholder: "JWT token for importer auth (optional)" %>
+  </div>
+  <p>
+    *Example*</br>
+    <pre>
+      <code>
+        user = Unity::Core::User.find_by(role: "operator")
+        app = Unity::Core::ExternalApplicationsRepository.new.find_by_id_or_name("importer") 
+        Magnet::Core::Shared::JwtTokensService.new.encode_token(app.application_id, user: user, expires_in_seconds: 1.year.to_i)
+      </code>
+    </pre>
+  </p>
+ 
+
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

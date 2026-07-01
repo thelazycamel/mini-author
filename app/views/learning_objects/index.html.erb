@@ -1,0 +1,27 @@
+<h1>Learning Objects</h1>
+
+<%= link_to "New Learning Object", new_learning_object_path, class: "btn btn-primary mb-3" %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Site</th>
+      <th>Upload Response</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @learning_objects.each do |lo| %>
+      <tr>
+        <td><%= lo.name %></td>
+        <td><%= lo.site.name %></td>
+        <td><%= lo.upload_response %></td>
+        <td>
+          <%= link_to "Edit", edit_learning_object_path(lo), class: "btn btn-sm btn-outline-primary" %>
+          <%= button_to "Delete", learning_object_path(lo), method: :delete, class: "btn btn-sm btn-outline-danger", data: { turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,33 @@
+<h1>Sites</h1>
+
+<%= link_to "New Site", new_site_path, class: "btn btn-primary mb-3" %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Domain (Importer)</th>
+      <th>LO Path</th>
+      <th>Structure Path</th>
+      <th>Port</th>
+      <th>Bearer Token</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sites.each do |site| %>
+      <tr>
+        <td><%= site.name %></td>
+        <td><%= site.domain %></td>
+        <td><%= site.path %></td>
+        <td><%= site.structure_path %></td>
+        <td><%= site.port %></td>
+        <td><%= site.api_token.to_s[0..5] %></td>
+        <td>
+          <%= link_to "Edit", edit_site_path(site), class: "btn btn-sm btn-outline-primary" %>
+          <%= button_to "Delete", site_path(site), method: :delete, class: "btn btn-sm btn-outline-danger", data: { turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

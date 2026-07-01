@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("DB_POOL_SIZE", 5) %>
+  host: <%= ENV.fetch("DB_HOST", "localhost") %>
+  port: <%= ENV.fetch("DB_PORT", 5432) %>
+  username: <%= ENV.fetch("DB_USER", "postgres") %>
+  password: <%= ENV.fetch("DB_PASSWORD", "password") %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("LOCAL_AUTHOR_DB_NAME_DEV", "local_author_dev") %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("LOCAL_AUTHOR_DB_NAME_TEST", "local_author_test") %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("LOCAL_AUTHOR_DB_NAME", "local_author_production") %>
