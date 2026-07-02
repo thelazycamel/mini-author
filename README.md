@@ -37,7 +37,7 @@ docker compose run --rm platform bundle exec rails console
 2. Generate a token:
 
 ```ruby
-user = Unity::Core::User.find_by(email: "operator@default") # use your admin user
+user = Unity::Core::User.find_by(email: "admin@example.com") # use your admin user
 app = Unity::Core::ExternalApplicationsRepository.new.find_by_id_or_name("importer")
 token = Magnet::Core::Shared::JwtTokensService.new.encode_token(
   app.application_id,
