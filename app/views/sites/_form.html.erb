@@ -22,17 +22,17 @@
 
   <div class="mb-3">
     <%= f.label :path, "LO Path", class: "form-label" %>
-    <%= f.text_field :path, class: "form-control", placeholder: "/api/v1/resources" %>
+    <%= f.text_field :path, class: "form-control", placeholder: "d2l/api/lr/1.0/objects" %>
   </div>
 
   <div class="mb-3">
     <%= f.label :port, "Importer Port (if required)", class: "form-label" %>
-    <%= f.text_field :port, class: "form-control", placeholder: "8443 (optional)" %>
+    <%= f.text_field :port, class: "form-control", placeholder:"3005 (optional)" %>
   </div>
 
   <div class="mb-3">
     <%= f.label :structure_path, class: "form-label" %>
-    <%= f.text_field :structure_path, class: "form-control", placeholder: "internal/api/v1/structures (optional)" %>
+    <%= f.text_field :structure_path, class: "form-control", placeholder: "internal/api/v1/structures" %>
   </div>
 
   <div class="mb-3">
@@ -41,6 +41,7 @@
   </div>
   <p>
     *Example*</br>
+    To create a valid JWT Token - required for structure imports:
     <pre>
       <code>
         user = Unity::Core::User.find_by(role: "operator")

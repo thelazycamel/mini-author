@@ -6,7 +6,10 @@ class SitesController < ApplicationController
   end
 
   def new
-    @site = Site.new
+    @site = Site.new(
+      path: "d2l/api/lr/1.0/objects",
+      structure_path: "internal/api/v1/structures"
+    )
   end
 
   def create
