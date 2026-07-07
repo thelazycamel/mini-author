@@ -1,9 +1,76 @@
-<div class="text-center mt-5">
+<div class="mt-4">
   <h1>Local Author</h1>
-  <p class="lead">Learning Object Management Tool</p>
-  <div class="mt-4">
-    <%= link_to "Manage Sites", sites_path, class: "btn btn-primary me-2" %>
-    <%= link_to "Manage Learning Objects", learning_objects_path, class: "btn btn-secondary" %>
-    <%= link_to "Manage Structures", structures_path, class: "btn btn-secondary" %>
+  <p class="lead">Learning Object and Structure management tool for the Magnet platform.</p>
+  <p>This site allows you to publish LOs and Course Structures to your local Importer.</p>
+
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Sites</h5>
+          <p class="card-text">Configure external endpoints for uploading LOs and structures.</p>
+          <ul class="list-unstyled small text-muted">
+            <li><strong>Domain</strong> — base URL of the importer (e.g. <code>http://default.importer.magnet.test</code>)</li>
+            <li><strong>Port</strong> — optional, appended to domain if present</li>
+            <li><strong>Path</strong> — LO upload endpoint (e.g. <code>d2l/api/lr/1.0/objects</code>)</li>
+            <li><strong>Structure Path</strong> — structures endpoint (e.g. <code>internal/api/v1/structures</code>)</li>
+            <li><strong>API Token</strong> — Bearer token for authenticated endpoints</li>
+          </ul>
+          <%= link_to "Manage Sites", sites_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Learning Objects</h5>
+          <p class="card-text">Upload SCORM/LO packages to an external content delivery site via HTTP PUT.</p>
+          <ul class="list-unstyled small text-muted">
+            <li>Select a <strong>Site</strong> to target (Local Importer)</li>
+            <li>Attach the <strong>LO file</strong> (zip)</li>
+            <li>Attach an <strong>LearningObjectInfo.xml</strong> file (you will find this inside the LO zip)</li>
+            <li>The files are then PUT to your local importer (site from above)</li>
+            <li>The response <code>IdentId</code> is stored for reference</li>
+          </ul>
+          <%= link_to "Manage Learning Objects", learning_objects_path, class: "btn btn-secondary" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Structures</h5>
+          <p class="card-text">Upload structure XML to the importer to create or update courses.</p>
+          <ul class="list-unstyled small text-muted">
+            <li>Select a <strong>Site</strong> (Importer endpoint)</li>
+            <li>Attach a <strong>Structure XML</strong> file (Download from Author Projects)</li>
+            <li>Provide a <strong>Cover Image URL</strong> (required for new courses)</li>
+            <li>Leave <strong>Course UUID</strong> blank to create, or fill it in to update</li>
+            <li>The structure is the PUT/POST to your importer site and will update or create a new course with the structure</li>
+          </ul>
+          <%= link_to "Manage Structures", structures_path, class: "btn btn-secondary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Getting a Bearer Token</h5>
+      <p class="card-text small">The importer's structures API requires JWT auth. Generate a long-lived token from the platform console:</p>
+      <pre class="bg-light p-3 rounded small"><code>docker compose run --rm platform bundle exec rails console
+
+user = Unity::Core::User.find_by(email: "admin@example.com")
+app = Unity::Core::ExternalApplicationsRepository.new.find_by_id_or_name("importer")
+token = Magnet::Core::Shared::JwtTokensService.new.encode_token(
+  app.application_id,
+  user: user,
+  expires_in_seconds: 1.year.to_i
+)
+puts token</code></pre>
+      <p class="card-text small text-muted">Paste the token into the Site's "API Token" field.</p>
+    </div>
   </div>
 </div>
