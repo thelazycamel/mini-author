@@ -19,7 +19,7 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 # File uploads [https://github.com/carrierwaveuploader/carrierwave]
-gem "carrierwave", "~> 3.0"
+gem "carrierwave", "~> 3.1"
 # HTTP client for external API calls
 gem "rest-client", "~> 2.1"
 # Environment variable management
